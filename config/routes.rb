@@ -5,6 +5,7 @@ resources :users
 
 post '/login', to: 'users#login'
 get 'auth', to: 'users#auth'
-
+get 'auth', to: 'users#auth'
+get '/profile', to: 'users#profile'
 
 end
