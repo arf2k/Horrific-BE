@@ -35,6 +35,13 @@ skip_before_action :authorized, only: [:create, :login]
           params.require(:user).permit(:username, :password, :avatar)
      end
 
+     def movie_params
+          params.require(:movie).permit(:title, :description, :image)
+        end
+      
+        def fave_params
+          params.require(:favorite).permit!
+        end
 
 
 

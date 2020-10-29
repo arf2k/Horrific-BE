@@ -3,9 +3,12 @@ Rails.application.routes.draw do
 
 resources :users
 resources :movies
+resources :my_movies
 
 post '/login', to: 'users#login'
 get 'auth', to: 'users#auth'
 get '/profile', to: 'users#profile'
-
+get '/movies', to: 'movies#index'
+get 'users/favorites' to: 'my_movies#my_favorites'
+post 'users/favorites' to: 'users#add_favorites'
 end
