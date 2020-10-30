@@ -3,6 +3,7 @@ class MyMoviesController < ApplicationController
 
 def index
      my_favorites = Favorite.all.find_by(user: current_user)
+     
 
      render json: my_favorites
 end
