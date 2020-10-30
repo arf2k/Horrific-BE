@@ -6,7 +6,7 @@ skip_before_action :authorized, only: [:create, :login]
 
           if @user.valid?
                @token = encode_token(user_id: @user.id)
-               render json:  { user: User.new(@user), jwt: @token, message: 'user created' }, status: :created
+               render json:  { user: UserSerializer.new(@user), jwt: @token}, status: :created
 
           else 
                render json: { error: 'failed to create user' }, status: :not_acceptable
@@ -16,7 +16,7 @@ skip_before_action :authorized, only: [:create, :login]
 
      def auth 
           
-          render json: { user: User.new(@user) }, status: :accepted
+          render json: { user: UserSerializer.new(@user) }, status: :accepted
      end
 
 
@@ -31,9 +31,9 @@ skip_before_action :authorized, only: [:create, :login]
      end
 
      def add_favorites 
-          my_fave = MyMovie.find_or_create_by(user: current_user)
-          new_favorite = Movie.create(movie_params)
-          fave = Favorite.create(user: current_user, movie: new_favorite)
+          # my_fave = MyMovie.find_or_create_by(user: current_user)
+          # new_favorite = Movie.create(movie_params)
+          fave = Favorite.create(user: current_user, movie_id: params["movie_id"])
      end
 
      private
@@ -43,7 +43,7 @@ skip_before_action :authorized, only: [:create, :login]
      end
 
      def movie_params
-          params.require(:movie).permit(:title, :description, :image)
+          params.require(:movie).permit(:poster_path, :popularity, :vote_count, :video, :media_type, :apiId, :adult, :backdrop_path, :original_language, :original_title, :genre_ids, :title, :vote_average, :overview, :release_date)
         end
       
         def fave_params

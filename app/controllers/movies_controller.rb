@@ -2,9 +2,12 @@ class MoviesController < ApplicationController
 skip_before_action :authorized
 
      def index
-          results = Api.movies(params[:id])
+          results = Movie.all
+
+          # results.each Movie.create 
+
          
-          render json: results
+          render json: results 
      end
 
      def show

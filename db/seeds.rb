@@ -5,18 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-User.destroy_all
-Movie.destroy_all
 Review.destroy_all
 Favorite.destroy_all 
+Movie.destroy_all
+User.destroy_all
 
 
-Xan = User.create(username: "Xan", password: "123", avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ham_%284%29.jpg/440px-Ham_%284%29.jpg")
 
-HF = Movie.create(title: "Hot Fuzz", image: "url", description: "it's funny")
 
-R1 = Review.create(user: Xan, movie: HF)
+ApiMovies = Api.movies 
+ApiMovies["items"].each do |apiMovie|
+     Movie.create(apiMovie)
+end 
 
-F1 = Favorite.create(user: Xan, movie: HF)
 

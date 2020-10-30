@@ -7,7 +7,7 @@ class Api < ApplicationRecord
           json_response = JSON.parse(response.read_body)
      end
 
-     def self.movies(url)
+     def self.movies
           url = "https://api.themoviedb.org/3/list/7062993?&api_key=#{ENV['TMDB_KEY']}"
           response = Api.api_call(url)
      end
