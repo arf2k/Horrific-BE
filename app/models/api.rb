@@ -12,4 +12,9 @@ class Api < ApplicationRecord
           response = Api.api_call(url)
      end
 
+     def self.single_movie(movie_id)
+          url = "https://api.themoviedb.org/3/movie/#{movie_id}?&api_key=#{ENV['TMDB_KEY']}"
+          response = Api.api_call(url)
+     end
+
 end

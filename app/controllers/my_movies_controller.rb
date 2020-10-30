@@ -1,9 +1,10 @@
 class MyMoviesController < ApplicationController
+     skip_before_action :authorized
 
-
-def my_favorites 
-     my_favorites = Movie.find_by(user: current_user)
+def index
+     my_favorites = Favorite.all.find_by(user: current_user)
 
      render json: my_favorites
+end
 
 end

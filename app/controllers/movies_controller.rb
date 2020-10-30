@@ -7,7 +7,11 @@ skip_before_action :authorized
           render json: results
      end
 
-
+     def show
+          single_movie = Api.single_movie(params[:id])
+     
+          render json: single_movie
+     end
      
 
 
