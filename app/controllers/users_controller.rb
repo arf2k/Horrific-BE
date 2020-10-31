@@ -31,7 +31,7 @@ skip_before_action :authorized, only: [:create, :login]
      end
 
      def add_favorites 
-          fave = Favorite.create(user_id: params[:user][:id], movie_id: params[:movie][:id])
+          fave = Favorite.find_or_create_by(user_id: params[:user][:id], movie_id: params[:movie][:id])
           render json: fave 
           
      end

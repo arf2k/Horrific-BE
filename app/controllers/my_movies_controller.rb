@@ -1,14 +1,17 @@
 class MyMoviesController < ApplicationController
      skip_before_action :authorized
 
-def index
-    
-     # my_favorites = Favorite.find_by(params[:user_id])
+def my_favorites 
+     my_favorites = Favorite.where(user: current_user)
+end
 
-   my_favorites= Favorite.find_by(user: params["current_user"])
-#      my_favorites = Favorite.find(id: params["current_user"])
-# byebug
-     render json: my_favorites, status: :accepted 
+
+def fave_movies 
+     my_favorites.each do |movies|
+          movies.title
+
+     byebug 
+     render json: fave_movies, status: :accepted 
 end
 
 end
