@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 resources :users
 resources :movies
 resources :my_movies
+resources :favorites
 
 post '/login', to: 'users#login'
 get 'auth', to: 'users#auth'

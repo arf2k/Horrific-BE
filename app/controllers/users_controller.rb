@@ -31,15 +31,15 @@ skip_before_action :authorized, only: [:create, :login]
      end
 
      def add_favorites 
-          # my_fave = MyMovie.find_or_create_by(user: current_user)
-          # new_favorite = Movie.create(movie_params)
-          fave = Favorite.create(user: current_user, movie_id: params["movie_id"])
+          fave = Favorite.create(user_id: params[:user][:id], movie_id: params[:movie][:id])
+          render json: fave 
+          
      end
 
      private
     
      def user_params
-          params.require(:user).permit(:username, :password, :avatar)
+          params.require(:user).permit(:id, :username, :password, :avatar)
      end
 
      def movie_params
