@@ -35,8 +35,11 @@ skip_before_action :authorized, only: [:create, :login]
           render json: fave 
           
      end
-          
 
+     def add_reviews 
+          review = Review.find_or_create_by(user: current_user, movie_id: params[:id], review: params[:review])
+          render json: review
+     end
 
      private
     
@@ -50,6 +53,10 @@ skip_before_action :authorized, only: [:create, :login]
       
         def fave_params
           params.require(:favorite).permit!
+        end
+
+        def review_params
+          params.require(:review).permit!
         end
 
 

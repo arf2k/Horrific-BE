@@ -13,4 +13,6 @@ get '/movies', to: 'movies#index'
 get 'my_movies', to: 'my_movies#my_favorites'
 post 'users/favorites', to: 'users#add_favorites'
 get 'movies/:id', to: 'movies#show'
+post '/movies/:id/reviews', to: 'users#add_reviews'
+
 end
