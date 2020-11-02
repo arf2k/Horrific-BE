@@ -37,8 +37,10 @@ skip_before_action :authorized, only: [:create, :login]
      end
 
      def add_reviews 
-          review = Review.find_or_create_by(user: current_user, movie_id: params[:id], review: params[:review])
+          review = Review.create(user: current_user, movie_id: params[:id], review: params[:review], title: params[:title], username: params[:username])
+        
           render json: review
+          
      end
 
      private
