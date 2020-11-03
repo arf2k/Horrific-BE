@@ -36,6 +36,14 @@ skip_before_action :authorized, only: [:create, :login]
           
      end
 
+
+     def delete_favorite
+          fave = Favorite.destroy(params[:id])
+          byebug
+          render json: fave
+     end
+
+
      def add_reviews 
           review = Review.create(user: current_user, movie_id: params[:id], review: params[:review], title: params[:title], username: params[:username])
         
@@ -50,7 +58,7 @@ skip_before_action :authorized, only: [:create, :login]
      end
 
      def movie_params
-          params.require(:movie).permit(:poster_path, :popularity, :vote_count, :video, :media_type, :adult, :backdrop_path, :original_language, :original_title, :genre_ids, :title, :vote_average, :overview, :release_date, :original_name, :name, :origin_country, :first_air_date )
+          params.require(:movie).permit(:poster_path, :popularity, :vote_count, :video, :media_type, :adult, :backdrop_path, :original_language, :original_title, :genre_ids, :title, :vote_average, :overview, :release_date, :original_name, :name, :origin_country, :first_air_date, :apiId )
         end
       
         def fave_params

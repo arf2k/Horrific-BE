@@ -16,5 +16,6 @@ post 'users/favorites', to: 'users#add_favorites'
 get 'movies/:id', to: 'movies#show'
 post '/movies/:id/reviews', to: 'users#add_reviews'
 get 'movies/:id/my_reviews', to: 'reviews#show'
+delete 'users/favorites/:id', to: 'users#delete_favorite'
 
 end
