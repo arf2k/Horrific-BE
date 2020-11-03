@@ -16,6 +16,8 @@ class CreateMovies < ActiveRecord::Migration[6.0]
       t.integer :vote_average 
       t.text :overview
       t.string :release_date
+      t.string :original_name
+      t.string :name
 
 
 
