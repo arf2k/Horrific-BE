@@ -15,7 +15,9 @@ User.destroy_all
 
 ApiMovies = Api.movies 
 ApiMovies["items"].each do |apiMovie|
-     Movie.create(apiMovie)
+     if !!apiMovie["title"]  
+          Movie.create(apiMovie)
+     end
 end 
 
 
