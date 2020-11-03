@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2020_11_02_173007) do
     t.integer "vote_count"
     t.boolean "video"
     t.string "media_type"
-    t.integer "apiId"
     t.boolean "adult"
     t.string "backdrop_path"
     t.string "original_language"
@@ -43,7 +42,11 @@ ActiveRecord::Schema.define(version: 2020_11_02_173007) do
     t.integer "vote_average"
     t.text "overview"
     t.string "release_date"
+    t.string "origin_country"
+    t.string "name"
     t.string "original_name"
+    t.string "first_air_date"
+    t.integer "apiId"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "review"

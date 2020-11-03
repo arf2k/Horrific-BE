@@ -50,7 +50,7 @@ skip_before_action :authorized, only: [:create, :login]
      end
 
      def movie_params
-          params.require(:movie).permit(:poster_path, :popularity, :vote_count, :video, :media_type, :apiId, :adult, :backdrop_path, :original_language, :original_title, :genre_ids, :title, :vote_average, :overview, :release_date)
+          params.require(:movie).permit(:poster_path, :popularity, :vote_count, :video, :media_type, :adult, :backdrop_path, :original_language, :original_title, :genre_ids, :title, :vote_average, :overview, :release_date, :original_name, :name, :origin_country, :first_air_date )
         end
       
         def fave_params
