@@ -56,7 +56,7 @@ skip_before_action :authorized, only: [:create, :login]
      end
 
      def delete_review
-          review = Review.destroy(params[:id])
+          user_review = Review.destroy(params[:id])
           render json: review
      end
 
