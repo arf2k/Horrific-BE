@@ -39,16 +39,25 @@ skip_before_action :authorized, only: [:create, :login]
 
      def delete_favorite
           fave = Favorite.destroy(params[:id])
-          byebug
           render json: fave
      end
 
 
      def add_reviews 
-          review = Review.create(user: current_user, movie_id: params[:id], review: params[:review], title: params[:title], username: params[:username])
-        
+          review = Review.create(user: current_user, movie_id: params[:id], review: params[:review], title: params[:title], username: params[:username], avatar: params[:user][:avatar])
           render json: review
           
+     end
+
+     def update_reviews
+          review= Review.find(params[:id])
+          review.update(review_params)
+          render json: review
+     end
+
+     def delete_review
+          review = Review.destroy(params[:id])
+          render json: review
      end
 
      private
@@ -66,7 +75,7 @@ skip_before_action :authorized, only: [:create, :login]
         end
 
         def review_params
-          params.require(:review).permit!
+          params.require(:review).permit(user: current_user, movie_id: params[:id], review: params[:review], title: params[:title], username: params[:username], avatar: params[:user][:avatar])
         end
 
 
