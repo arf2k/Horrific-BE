@@ -17,6 +17,13 @@ skip_before_action :authorized
     
      end
 
+     def all_reviews 
+
+          all_reviews = Review.where(movie_id: params[:id])
+
+          render json: all_reviews
+     end
+
      
     
   

@@ -18,5 +18,7 @@ post '/movies/:id/reviews', to: 'users#add_reviews'
 delete '/movies/:id/reviews/:id', to: 'users#delete_review'
 get 'movies/:id/my_reviews', to: 'reviews#show'
 delete 'users/favorites/:id', to: 'users#delete_favorite'
+get 'movies/:id/reviews', to: 'movies#all_reviews' 
+
 
 end
