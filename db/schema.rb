@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_200737) do
+ActiveRecord::Schema.define(version: 2020_11_09_002922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.text "username"
+    t.text "avatar"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "yt_id"
+    t.string "video_id"
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -79,6 +90,18 @@ ActiveRecord::Schema.define(version: 2020_11_03_200737) do
     t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "yt_id"
+    t.string "title"
+    t.string "comment"
+    t.string "avatar"
+    t.string "username"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "comment_id"
   end
 
   add_foreign_key "favorites", "movies"

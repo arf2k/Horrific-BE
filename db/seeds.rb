@@ -9,6 +9,8 @@ Review.destroy_all
 Favorite.destroy_all 
 Movie.destroy_all
 User.destroy_all
+Comment.destroy_all 
+Video.destroy_all 
 
 
 

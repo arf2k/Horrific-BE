@@ -6,6 +6,8 @@ resources :movies
 resources :my_movies
 resources :favorites
 resources :reviews
+resources :comments
+resources :videos
 
 post '/login', to: 'users#login'
 get 'auth', to: 'users#auth'
@@ -19,6 +21,7 @@ delete '/movies/:id/reviews/:id', to: 'users#delete_review'
 get 'movies/:id/my_reviews', to: 'reviews#show'
 delete 'users/favorites/:id', to: 'users#delete_favorite'
 get 'movies/:id/reviews', to: 'movies#all_reviews' 
+post '/videos/comments', to: 'comments#create'
 
 
 end

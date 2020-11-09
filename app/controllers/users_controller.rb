@@ -60,6 +60,14 @@ skip_before_action :authorized, only: [:create, :login]
           render json: user_review
      end
 
+     # def add_comments
+     # video = Video.find_or_create_by(user_id: current_user, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username], comment_id: params[:id])
+     # comment = Comment.find_or_create_by(user_id: current_user, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username], video_id: params[:id])
+     # render json: { video: video, comment: comment  }
+     # end
+
+
+
      private
     
      def user_params
@@ -78,6 +86,13 @@ skip_before_action :authorized, only: [:create, :login]
           params.require(:review).permit(user: current_user, movie_id: params[:id], review: params[:review], title: params[:title], username: params[:username], avatar: params[:user][:avatar])
         end
 
+     def comment_params
+          params.require(:comment).permit(user_id: current_user, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username], video_id: params[:id])
+     end
+
+     def video_params
+          params.require(:video).permit(user_id: current_user, yt_id: params[:yt_id], comment: params[:comment][:comment], username: params[:user][:username], comment_id: params[:id] )
+          end
 
 
 end
