@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+     skip_before_action :authorized
 
 
      def index
@@ -7,7 +8,7 @@ class VideosController < ApplicationController
           
      end
 
-
+ 
 
 
 

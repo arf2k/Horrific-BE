@@ -1,17 +1,29 @@
 class CommentsController < ApplicationController
+     skip_before_action :authorized
 
      def create
-          video = Video.create(user_id: current_user.id, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username])
-          
+          videoUpdate = Video.find_by(yt_id: params[:yt_id])
+         if videoUpdate 
+           videoUpdate.update(user_id: current_user.id, comment: params[:comment], avatar: params[:user][:avatar], username: params[:user][:username], thumbnail: params[:thumbnail], title: params[:title]) 
+     else 
+          video = Video.create(user_id: current_user.id, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username], thumbnail: params[:thumbnail], title: params[:title]) 
+
           comment = Comment.create(user_id: current_user.id, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username], video: video)
 
-          render json: { video: video, comment: comment }
+          render json: { video: video, videoUpdate: videoUpdate, comment: comment }
      end
+     end
+
      
-     def index 
+     def index
           comments = Comment.all 
      end
      
+     def video_comments
+          video_comments = Comment.where(video_id: params[:id])
+
+          render json: video_comments
+     end
      
      
      def user_comments

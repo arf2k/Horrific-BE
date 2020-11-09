@@ -22,6 +22,8 @@ get 'movies/:id/my_reviews', to: 'reviews#show'
 delete 'users/favorites/:id', to: 'users#delete_favorite'
 get 'movies/:id/reviews', to: 'movies#all_reviews' 
 post '/videos/comments', to: 'comments#create'
+get '/videos/:id/comments', to: 'comments#video_comments'
+get '/videos', to: 'videos#index'
 
 
 end
