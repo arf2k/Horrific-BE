@@ -3,9 +3,16 @@ class VideosController < ApplicationController
 
 
      def index
-        videos = Video.all 
-          render json: videos 
+        videos = Video.all
+          render json: videos
           
+     end
+
+     def all_videos
+          
+          all = Comment.where(video_id: params[:id])
+
+          render json: all 
      end
 
  

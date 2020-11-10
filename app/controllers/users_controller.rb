@@ -60,6 +60,19 @@ skip_before_action :authorized, only: [:create, :login]
           render json: user_review
      end
 
+     def add_video_reply
+     
+     new_comment = Comment.create(user_id: current_user.id, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username], video_id: params[:id])
+     all = Comment.where(video_id: params[:id])
+
+     render json: { new_comment: new_comment, all_comments: all}  
+     
+     end
+
+
+   
+
+
      # def add_comments
      # video = Video.find_or_create_by(user_id: current_user, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username], comment_id: params[:id])
      # comment = Comment.find_or_create_by(user_id: current_user, comment: params[:comment], yt_id: params[:yt_id], avatar: params[:user][:avatar], username: params[:user][:username], video_id: params[:id])
