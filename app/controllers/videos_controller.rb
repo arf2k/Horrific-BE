@@ -15,6 +15,15 @@ class VideosController < ApplicationController
           render json: all 
      end
 
+
+     def my_videos
+
+          mine = Videos.where(user: current_user)
+
+          render json: mine 
+
+     end
+
  
 
 
