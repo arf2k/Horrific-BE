@@ -4,7 +4,6 @@ class MyMoviesController < ApplicationController
 def index 
      my_favorites = Favorite.where(user: current_user)
      my_reviews = Review.where(user: current_user)
-     # mine = Video.where(user: current_user)
      
      render json: { favorites: my_favorites, reviews: my_reviews}
    
